@@ -1,26 +1,34 @@
 import React, { useState } from 'react';
 import Layout from './components/Layout';
 import Dashboard from './components/Dashboard';
-import QualityTesting from './components/QualityTesting';
-import PublicVerification from './components/PublicVerification';
+import AIWorkouts from './components/AIWorkouts';
+import FormTracker from './components/FormTracker';
+import Challenges from './components/Challenges';
+import Community from './components/Community';
+import RecoveryHub from './components/RecoveryHub';
 
 function App() {
-  const [userRole, setUserRole] = useState('admin');
   const [currentPage, setCurrentPage] = useState('dashboard');
 
   const renderContent = () => {
     switch (currentPage) {
-      case 'tests':
-        return <QualityTesting />;
-      case 'verify':
-        return <PublicVerification />;
+      case 'workouts':
+        return <AIWorkouts />;
+      case 'form-tracker':
+        return <FormTracker />;
+      case 'challenges':
+        return <Challenges />;
+      case 'community':
+        return <Community />;
+      case 'recovery':
+        return <RecoveryHub />;
       default:
-        return <Dashboard userRole={userRole} />;
+        return <Dashboard />;
     }
   };
 
   return (
-    <Layout userRole={userRole} onRoleChange={setUserRole}>
+    <Layout currentPage={currentPage} onPageChange={setCurrentPage}>
       {renderContent()}
     </Layout>
   );

@@ -1,104 +1,73 @@
 import React from 'react';
 import { 
   TrendingUp, 
-  AlertTriangle, 
-  CheckCircle, 
+  Flame, 
+  Target, 
   Clock, 
-  Package, 
+  Dumbbell, 
+  Trophy,
+  Zap,
+  Heart,
+  Activity,
+  Calendar,
   Users,
-  FlaskConical,
-  Shield
+  Award
 } from 'lucide-react';
 
-interface DashboardProps {
-  userRole: string;
-}
+const Dashboard: React.FC = () => {
+  const stats = [
+    { label: 'Current Streak', value: '89', unit: 'days', icon: Flame, color: 'from-orange-500 to-red-500', trend: '+12%' },
+    { label: 'Weekly Volume', value: '47.2', unit: 'tons', icon: Dumbbell, color: 'from-blue-500 to-purple-500', trend: '+8%' },
+    { label: 'PR This Month', value: '23', unit: 'records', icon: Trophy, color: 'from-yellow-500 to-orange-500', trend: '+15%' },
+    { label: 'Recovery Score', value: '94', unit: '%', icon: Heart, color: 'from-green-500 to-blue-500', trend: '+3%' }
+  ];
 
-const Dashboard: React.FC<DashboardProps> = ({ userRole }) => {
-  const getStatsForRole = (role: string) => {
-    switch (role) {
-      case 'admin':
-        return [
-          { label: 'Total Suppliers', value: '142', icon: Users, color: 'bg-blue-500' },
-          { label: 'Active Tests', value: '89', icon: FlaskConical, color: 'bg-green-500' },
-          { label: 'Pending Approvals', value: '23', icon: Clock, color: 'bg-yellow-500' },
-          { label: 'Critical Alerts', value: '7', icon: AlertTriangle, color: 'bg-red-500' }
-        ];
-      case 'quality_officer':
-        return [
-          { label: 'Tests Today', value: '34', icon: FlaskConical, color: 'bg-blue-500' },
-          { label: 'Passed Batches', value: '28', icon: CheckCircle, color: 'bg-green-500' },
-          { label: 'Failed Batches', value: '3', icon: AlertTriangle, color: 'bg-red-500' },
-          { label: 'Pending Review', value: '12', icon: Clock, color: 'bg-yellow-500' }
-        ];
-      case 'supplier':
-        return [
-          { label: 'My Batches', value: '56', icon: Package, color: 'bg-blue-500' },
-          { label: 'Approved', value: '51', icon: CheckCircle, color: 'bg-green-500' },
-          { label: 'Under Review', value: '4', icon: Clock, color: 'bg-yellow-500' },
-          { label: 'Rejected', value: '1', icon: AlertTriangle, color: 'bg-red-500' }
-        ];
-      case 'public':
-        return [
-          { label: 'Verifications Today', value: '1,234', icon: Shield, color: 'bg-blue-500' },
-          { label: 'Authentic Medicines', value: '1,198', icon: CheckCircle, color: 'bg-green-500' },
-          { label: 'Suspicious Items', value: '36', icon: AlertTriangle, color: 'bg-red-500' },
-          { label: 'Total Database', value: '45,678', icon: Package, color: 'bg-gray-500' }
-        ];
-      default:
-        return [];
-    }
-  };
+  const recentWorkouts = [
+    { name: 'Beast Mode Push', duration: '1h 23m', calories: 847, intensity: 'Extreme', completed: '2 hours ago' },
+    { name: 'Deadlift Domination', duration: '1h 45m', calories: 923, intensity: 'High', completed: 'Yesterday' },
+    { name: 'Cardio Crusher', duration: '45m', calories: 612, intensity: 'Moderate', completed: '2 days ago' }
+  ];
 
-  const stats = getStatsForRole(userRole);
-
-  const recentActivity = {
-    admin: [
-      { action: 'New supplier "PharmaCorp" registered', time: '2 hours ago', type: 'info' },
-      { action: 'Quality alert: Batch #B2024-0156 failed inspection', time: '4 hours ago', type: 'error' },
-      { action: 'Monthly compliance report generated', time: '6 hours ago', type: 'success' }
-    ],
-    quality_officer: [
-      { action: 'Batch #B2024-0178 passed all quality tests', time: '1 hour ago', type: 'success' },
-      { action: 'Chemical analysis completed for Batch #B2024-0179', time: '3 hours ago', type: 'info' },
-      { action: 'Visual inspection flagged defects in Batch #B2024-0180', time: '5 hours ago', type: 'warning' }
-    ],
-    supplier: [
-      { action: 'Batch #B2024-0181 approved by quality team', time: '30 mins ago', type: 'success' },
-      { action: 'Certificate uploaded for Batch #B2024-0182', time: '2 hours ago', type: 'info' },
-      { action: 'Batch #B2024-0183 submitted for review', time: '4 hours ago', type: 'info' }
-    ],
-    public: [
-      { action: 'Medicine verified: Authentic Aspirin batch', time: '5 mins ago', type: 'success' },
-      { action: 'Counterfeit alert: Suspicious antibiotics reported', time: '1 hour ago', type: 'error' },
-      { action: 'QR code verification successful', time: '2 hours ago', type: 'success' }
-    ]
-  };
-
-  const currentActivity = recentActivity[userRole as keyof typeof recentActivity] || [];
+  const challenges = [
+    { name: 'Global Squat Challenge', progress: 78, total: 10000, reward: '500 XP', timeLeft: '3 days' },
+    { name: 'Iron Will Deadlift', progress: 92, total: 5000, reward: 'Elite Badge', timeLeft: '1 day' },
+    { name: 'Cardio Warrior', progress: 45, total: 50, reward: '1000 XP', timeLeft: '5 days' }
+  ];
 
   return (
-    <div className="p-6">
-      <div className="mb-8">
-        <h1 className="text-2xl font-bold text-gray-900 capitalize">
-          {userRole.replace('_', ' ')} Dashboard
-        </h1>
-        <p className="text-gray-600 mt-1">
-          Monitor and manage medicine quality testing and compliance
-        </p>
+    <div className="p-6 space-y-8">
+      {/* Header */}
+      <div className="flex items-center justify-between">
+        <div>
+          <h1 className="text-3xl font-bold text-white">Welcome back, Beast! 💪</h1>
+          <p className="text-gray-400 mt-1">Ready to crush today's limits?</p>
+        </div>
+        <div className="flex items-center space-x-4">
+          <div className="text-right">
+            <div className="text-2xl font-bold text-orange-500">Level 47</div>
+            <div className="text-sm text-gray-400">Elite Athlete</div>
+          </div>
+          <div className="w-16 h-16 bg-gradient-to-r from-orange-500 to-red-500 rounded-full flex items-center justify-center">
+            <Zap className="h-8 w-8 text-white" />
+          </div>
+        </div>
       </div>
 
       {/* Stats Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
         {stats.map((stat, index) => (
-          <div key={index} className="bg-white rounded-lg shadow-md p-6 hover:shadow-lg transition-shadow">
-            <div className="flex items-center">
-              <div className={`${stat.color} p-3 rounded-lg`}>
+          <div key={index} className="bg-gray-800 rounded-xl p-6 border border-gray-700 hover:border-orange-500 transition-all duration-300">
+            <div className="flex items-center justify-between mb-4">
+              <div className={`p-3 rounded-lg bg-gradient-to-r ${stat.color}`}>
                 <stat.icon className="h-6 w-6 text-white" />
               </div>
-              <div className="ml-4">
-                <p className="text-sm font-medium text-gray-600">{stat.label}</p>
-                <p className="text-2xl font-semibold text-gray-900">{stat.value}</p>
+              <div className="text-green-400 text-sm font-medium">{stat.trend}</div>
+            </div>
+            <div className="space-y-1">
+              <p className="text-gray-400 text-sm">{stat.label}</p>
+              <div className="flex items-baseline space-x-1">
+                <span className="text-3xl font-bold text-white">{stat.value}</span>
+                <span className="text-gray-500 text-sm">{stat.unit}</span>
               </div>
             </div>
           </div>
@@ -106,49 +75,62 @@ const Dashboard: React.FC<DashboardProps> = ({ userRole }) => {
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-        {/* Quality Trends Chart */}
-        <div className="bg-white rounded-lg shadow-md p-6">
-          <div className="flex items-center justify-between mb-4">
-            <h3 className="text-lg font-semibold text-gray-900">Quality Trends</h3>
-            <TrendingUp className="h-5 w-5 text-green-500" />
+        {/* Performance Chart */}
+        <div className="bg-gray-800 rounded-xl p-6 border border-gray-700">
+          <div className="flex items-center justify-between mb-6">
+            <h3 className="text-xl font-bold text-white">Performance Trends</h3>
+            <TrendingUp className="h-6 w-6 text-green-500" />
           </div>
-          <div className="h-64 bg-gray-50 rounded-lg flex items-center justify-center">
+          <div className="h-64 bg-gray-900 rounded-lg flex items-center justify-center border border-gray-700">
             <div className="text-center">
-              <div className="inline-flex items-center space-x-4 mb-4">
+              <Activity className="h-12 w-12 text-orange-500 mx-auto mb-4" />
+              <p className="text-gray-400 mb-2">AI Performance Analytics</p>
+              <div className="flex items-center justify-center space-x-6 text-sm">
+                <div className="flex items-center space-x-2">
+                  <div className="w-3 h-3 bg-orange-500 rounded-full"></div>
+                  <span className="text-gray-300">Strength</span>
+                </div>
+                <div className="flex items-center space-x-2">
+                  <div className="w-3 h-3 bg-blue-500 rounded-full"></div>
+                  <span className="text-gray-300">Endurance</span>
+                </div>
                 <div className="flex items-center space-x-2">
                   <div className="w-3 h-3 bg-green-500 rounded-full"></div>
-                  <span className="text-sm text-gray-600">Passed</span>
-                </div>
-                <div className="flex items-center space-x-2">
-                  <div className="w-3 h-3 bg-red-500 rounded-full"></div>
-                  <span className="text-sm text-gray-600">Failed</span>
-                </div>
-                <div className="flex items-center space-x-2">
-                  <div className="w-3 h-3 bg-yellow-500 rounded-full"></div>
-                  <span className="text-sm text-gray-600">Pending</span>
+                  <span className="text-gray-300">Recovery</span>
                 </div>
               </div>
-              <p className="text-gray-500">Chart visualization would be implemented here</p>
-              <p className="text-sm text-gray-400 mt-2">Integration with Chart.js or similar library</p>
             </div>
           </div>
         </div>
 
-        {/* Recent Activity */}
-        <div className="bg-white rounded-lg shadow-md p-6">
-          <h3 className="text-lg font-semibold text-gray-900 mb-4">Recent Activity</h3>
+        {/* Recent Workouts */}
+        <div className="bg-gray-800 rounded-xl p-6 border border-gray-700">
+          <h3 className="text-xl font-bold text-white mb-6">Recent Workouts</h3>
           <div className="space-y-4">
-            {currentActivity.map((activity, index) => (
-              <div key={index} className="flex items-start space-x-3">
-                <div className={`mt-1 w-2 h-2 rounded-full ${
-                  activity.type === 'success' ? 'bg-green-500' :
-                  activity.type === 'error' ? 'bg-red-500' :
-                  activity.type === 'warning' ? 'bg-yellow-500' :
-                  'bg-blue-500'
-                }`}></div>
-                <div className="flex-1">
-                  <p className="text-sm text-gray-900">{activity.action}</p>
-                  <p className="text-xs text-gray-500">{activity.time}</p>
+            {recentWorkouts.map((workout, index) => (
+              <div key={index} className="bg-gray-900 rounded-lg p-4 border border-gray-700">
+                <div className="flex items-center justify-between mb-2">
+                  <h4 className="font-semibold text-white">{workout.name}</h4>
+                  <span className={`px-2 py-1 rounded-full text-xs font-medium ${
+                    workout.intensity === 'Extreme' ? 'bg-red-900 text-red-300' :
+                    workout.intensity === 'High' ? 'bg-orange-900 text-orange-300' :
+                    'bg-blue-900 text-blue-300'
+                  }`}>
+                    {workout.intensity}
+                  </span>
+                </div>
+                <div className="flex items-center justify-between text-sm text-gray-400">
+                  <div className="flex items-center space-x-4">
+                    <div className="flex items-center space-x-1">
+                      <Clock className="h-4 w-4" />
+                      <span>{workout.duration}</span>
+                    </div>
+                    <div className="flex items-center space-x-1">
+                      <Flame className="h-4 w-4" />
+                      <span>{workout.calories} cal</span>
+                    </div>
+                  </div>
+                  <span>{workout.completed}</span>
                 </div>
               </div>
             ))}
@@ -156,47 +138,58 @@ const Dashboard: React.FC<DashboardProps> = ({ userRole }) => {
         </div>
       </div>
 
-      {/* Quick Actions */}
-      <div className="mt-8">
-        <h3 className="text-lg font-semibold text-gray-900 mb-4">Quick Actions</h3>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-          {userRole === 'quality_officer' && (
-            <>
-              <button className="p-4 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors">
-                <FlaskConical className="h-6 w-6 mx-auto mb-2" />
-                <span className="text-sm font-medium">Start New Test</span>
-              </button>
-              <button className="p-4 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-colors">
-                <CheckCircle className="h-6 w-6 mx-auto mb-2" />
-                <span className="text-sm font-medium">Approve Batch</span>
-              </button>
-            </>
-          )}
-          {userRole === 'supplier' && (
-            <>
-              <button className="p-4 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors">
-                <Package className="h-6 w-6 mx-auto mb-2" />
-                <span className="text-sm font-medium">Submit New Batch</span>
-              </button>
-            </>
-          )}
-          {userRole === 'public' && (
-            <>
-              <button className="p-4 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors">
-                <Shield className="h-6 w-6 mx-auto mb-2" />
-                <span className="text-sm font-medium">Verify Medicine</span>
-              </button>
-            </>
-          )}
-          {userRole === 'admin' && (
-            <>
-              <button className="p-4 bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition-colors">
-                <Users className="h-6 w-6 mx-auto mb-2" />
-                <span className="text-sm font-medium">Manage Users</span>
-              </button>
-            </>
-          )}
+      {/* Active Challenges */}
+      <div className="bg-gray-800 rounded-xl p-6 border border-gray-700">
+        <div className="flex items-center justify-between mb-6">
+          <h3 className="text-xl font-bold text-white">Active Challenges</h3>
+          <Trophy className="h-6 w-6 text-yellow-500" />
         </div>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          {challenges.map((challenge, index) => (
+            <div key={index} className="bg-gray-900 rounded-lg p-4 border border-gray-700">
+              <div className="flex items-center justify-between mb-3">
+                <h4 className="font-semibold text-white text-sm">{challenge.name}</h4>
+                <Award className="h-5 w-5 text-yellow-500" />
+              </div>
+              <div className="mb-3">
+                <div className="flex justify-between text-xs text-gray-400 mb-1">
+                  <span>{challenge.progress.toLocaleString()}</span>
+                  <span>{challenge.total.toLocaleString()}</span>
+                </div>
+                <div className="w-full bg-gray-700 rounded-full h-2">
+                  <div 
+                    className="bg-gradient-to-r from-orange-500 to-red-500 h-2 rounded-full transition-all duration-300"
+                    style={{ width: `${(challenge.progress / challenge.total) * 100}%` }}
+                  ></div>
+                </div>
+              </div>
+              <div className="flex justify-between text-xs">
+                <span className="text-yellow-400 font-medium">{challenge.reward}</span>
+                <span className="text-gray-400">{challenge.timeLeft} left</span>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* Quick Actions */}
+      <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
+        <button className="bg-gradient-to-r from-orange-500 to-red-500 text-white p-4 rounded-xl hover:from-orange-600 hover:to-red-600 transition-all duration-300 transform hover:scale-105">
+          <Dumbbell className="h-6 w-6 mx-auto mb-2" />
+          <span className="text-sm font-medium">Start Workout</span>
+        </button>
+        <button className="bg-gradient-to-r from-blue-500 to-purple-500 text-white p-4 rounded-xl hover:from-blue-600 hover:to-purple-600 transition-all duration-300 transform hover:scale-105">
+          <Target className="h-6 w-6 mx-auto mb-2" />
+          <span className="text-sm font-medium">Form Check</span>
+        </button>
+        <button className="bg-gradient-to-r from-green-500 to-blue-500 text-white p-4 rounded-xl hover:from-green-600 hover:to-blue-600 transition-all duration-300 transform hover:scale-105">
+          <Users className="h-6 w-6 mx-auto mb-2" />
+          <span className="text-sm font-medium">Join Battle</span>
+        </button>
+        <button className="bg-gradient-to-r from-purple-500 to-pink-500 text-white p-4 rounded-xl hover:from-purple-600 hover:to-pink-600 transition-all duration-300 transform hover:scale-105">
+          <Calendar className="h-6 w-6 mx-auto mb-2" />
+          <span className="text-sm font-medium">Recovery</span>
+        </button>
       </div>
     </div>
   );
