@@ -1,18 +1,30 @@
 # 🏋️ Fitness Tracker Web App
 
+![Status](https://img.shields.io/badge/Status-Completed-brightgreen)
+![React](https://img.shields.io/badge/React-Frontend-blue)
+![Node.js](https://img.shields.io/badge/Node.js-Backend-green)
+![MongoDB](https://img.shields.io/badge/MongoDB-Database-success)
+![TypeScript](https://img.shields.io/badge/TypeScript-Language-blue)
+![Tailwind CSS](https://img.shields.io/badge/TailwindCSS-Styling-38B2AC)
+![Vercel](https://img.shields.io/badge/Deployed%20on-Vercel-black)
+
+## Live Demo
+
+🔗 https://fitness-tracker-web-app-iota.vercel.app/
+
+---
+
 ## Overview
 
-Fitness Tracker Web App is a web-based application designed to help users maintain a healthy lifestyle by tracking workouts, monitoring calorie intake, setting fitness goals, and analyzing progress over time.
-
-The platform provides a centralized solution for fitness management, helping users stay consistent and make data-driven decisions to achieve their health objectives.
+Fitness Tracker Web App is a web-based fitness management platform that helps users track workouts, monitor calorie intake, set fitness goals, and analyze progress over time. The application provides a structured and data-driven approach to fitness management, helping users stay consistent and achieve measurable results.
 
 ---
 
 ## Problem Statement
 
-Many people struggle to maintain fitness consistency because they lack a structured way to track workouts, calories, and progress.
+Many individuals struggle to maintain fitness consistency due to the lack of a structured system for tracking workouts, calories, and progress.
 
-The Fitness Tracker Web App solves this problem by providing an easy-to-use platform where users can monitor their fitness journey and measure improvement over time.
+The Fitness Tracker Web App solves this challenge by providing a centralized platform where users can monitor their fitness journey, analyze performance, and make informed decisions to improve their health.
 
 ---
 
@@ -20,19 +32,19 @@ The Fitness Tracker Web App solves this problem by providing an easy-to-use plat
 
 ### User Features
 
-* User-Friendly Dashboard
 * Workout Tracking
 * Calorie Monitoring
-* Fitness Goal Setting
+* Goal Setting
 * Progress Tracking
 * Activity Management
+* User-Friendly Dashboard
 
 ### Analytics Features
 
-* Progress Visualization
+* Performance Insights
 * Goal Achievement Monitoring
 * Workout History Tracking
-* Performance Insights
+* Progress Visualization
 
 ### System Features
 
@@ -51,7 +63,7 @@ The Fitness Tracker Web App solves this problem by providing an easy-to-use plat
 4. Calorie intake is monitored.
 5. Progress data is collected.
 6. Dashboard displays performance insights.
-7. Users analyze results and adjust goals accordingly.
+7. Users review progress and adjust goals accordingly.
 
 ---
 
@@ -63,6 +75,19 @@ The Fitness Tracker Web App solves this problem by providing an easy-to-use plat
 * TypeScript
 * Tailwind CSS
 * Vite
+
+### Backend
+
+* Node.js
+* Express.js
+
+### Database
+
+* MongoDB
+
+### APIs
+
+* REST APIs
 
 ### Development Tools
 
@@ -80,7 +105,7 @@ The Fitness Tracker Web App solves this problem by providing an easy-to-use plat
 git clone https://github.com/aryangarg2509-bit/Fitness-Tracker-WebApp.git
 ```
 
-### Navigate to Project Folder
+### Navigate to Project Directory
 
 ```bash
 cd Fitness-Tracker-WebApp
@@ -100,34 +125,15 @@ npm run dev
 
 ---
 
-## Screenshots
-
-### Home Page
-
-(Add Screenshot Here)
-
-### Dashboard
-
-(Add Screenshot Here)
-
-### Workout Tracking
-
-(Add Screenshot Here)
-
-### Progress Analytics
-
-(Add Screenshot Here)
-
----
-
 ## Future Enhancements
 
 * AI-Based Fitness Recommendations
 * Personalized Workout Plans
 * Diet & Nutrition Tracking
-* Mobile Application Support
 * Wearable Device Integration
+* Mobile Application Support
 * Social Fitness Challenges
+* Advanced Progress Analytics
 
 ---
 
